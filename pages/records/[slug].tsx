@@ -12,13 +12,13 @@ import config from "../../config";
 import HeadTitle from "../../components/head-title";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = await getNotionStaticPaths(config.notion.logs);
+  const paths = await getNotionStaticPaths(config.notion.records);
   return { paths, fallback: false };
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { page, blocks } = await getPageBlocksBySlug(
-    config.notion.logs,
+    config.notion.records,
     context.params?.slug as string
   );
 
@@ -36,7 +36,7 @@ const Log: NextPage = ({
     <>
       <HeadTitle title={title} />
       <header className="mb-12">
-        <h2 className="mb-2 text-2xl font-bold">{title}</h2>
+        <h1 className="mb-2 text-2xl font-bold">{title}</h1>
         <p className="text-sm text-stone-400">
           <code>{getNotionObjectProperty(page, "Date")}</code>
         </p>

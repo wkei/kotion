@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 const menu = [
   { href: "/", label: "About" },
-  { href: "/logs", label: "Logs" },
+  { href: "/records", label: "Records" },
   { href: "/photos", label: "Photos" },
 ];
 

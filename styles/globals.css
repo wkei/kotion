@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 html {
-  @apply text-stone-800 antialiased selection:bg-amber-200 selection:text-stone-600;
+  @apply text-stone-800 antialiased selection:bg-amber-200 selection:text-stone-700;
 }
 
 .prose :where(figure):not(:where([class~="not-prose"] *)) img {

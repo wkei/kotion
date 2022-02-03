@@ -7,23 +7,23 @@ import { getPublishedList } from "../../api/notion";
 import { getNotionObjectProperty } from "../../utils";
 
 export const getStaticProps: GetStaticProps = async () => {
-  const list = await getPublishedList(config.notion.logs);
+  const list = await getPublishedList(config.notion.records);
   return {
     props: { list },
   };
 };
 
-const Logs: NextPage = ({
+const Records: NextPage = ({
   list,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <HeadTitle title="Logs" />
+      <HeadTitle title="Records" />
       <ul>
         {list.map((item: any) => (
           <li key={item.id} className="mb-16">
             <h2 className="mb-2 text-xl font-semibold">
-              <Link href={`/logs/${getNotionObjectProperty(item, "Slug")}`}>
+              <Link href={`/records/${getNotionObjectProperty(item, "Slug")}`}>
                 <a className="focus:outline-dotted focus:outline-1">
                   {getNotionObjectProperty(item, "Title")}
                 </a>
@@ -39,4 +39,4 @@ const Logs: NextPage = ({
   );
 };
 
-export default Logs;
+export default Records;
