@@ -54,23 +54,27 @@ export default function Header() {
   return (
     <header className="mb-16">
       <h1 className="font-FSC select-none py-16 text-center text-4xl">
-        <ruby className="group transition-color text-stone-300 duration-300  hover:text-stone-700">
-          K
-          <span className="relative">
-            <span className="invisible">Ξ</span>
-            <span className="absolute left-0 transition-opacity  duration-300 group-hover:opacity-0">
-              Ξ
-            </span>
-            <span className="absolute left-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              E
-            </span>
-          </span>
-          I<rp>(</rp>
-          <rt className="text-center text-sm text-stone-400 opacity-0 group-hover:opacity-100">
-            ケイ
-          </rt>
-          <rp>)</rp>
-        </ruby>
+        <Link href="/">
+          <a>
+            <ruby className="group transition-color text-stone-300 duration-300  hover:text-stone-700">
+              K
+              <span className="relative">
+                <span className="invisible">Ξ</span>
+                <span className="absolute left-0 transition-opacity  duration-300 group-hover:opacity-0">
+                  Ξ
+                </span>
+                <span className="absolute left-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  E
+                </span>
+              </span>
+              I<rp>(</rp>
+              <rt className="text-center text-sm text-stone-400 opacity-0 group-hover:opacity-100">
+                ケイ
+              </rt>
+              <rp>)</rp>
+            </ruby>
+          </a>
+        </Link>
       </h1>
       <Nav />
     </header>
