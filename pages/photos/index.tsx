@@ -28,7 +28,7 @@ const Photos: NextPage = ({
             <a className="transform-color text-stone-400 duration-300 hover:text-stone-700 focus:outline-dotted focus:outline-1">
               <figure className="text-center">
                 <div
-                  className={`pb-full w-full bg-stone-100 bg-cover bg-center`}
+                  className={`pb-full w-full bg-stone-50 bg-cover bg-center`}
                   style={{ backgroundImage: `url(${item?.cover?.file.url})` }}
                 />
                 <figcaption className="my-2 uppercase ">
