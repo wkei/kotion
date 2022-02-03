@@ -6,7 +6,7 @@ function useTokyoTime() {
   useEffect(() => {
     const fetchTokyoTime = async () => {
       const res = await fetch(
-        "http://worldtimeapi.org/api/timezone/Asia/Tokyo"
+        "https://worldtimeapi.org/api/timezone/Asia/Tokyo"
       );
       const data = await res.json();
       const time = new Intl.DateTimeFormat("en-US", {

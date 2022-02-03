@@ -1,7 +1,7 @@
 import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
 import Link from "next/link";
 
-import { HeadTitle } from "../../components/doc-head";
+import HeadTitle from "../../components/head-title";
 import config from "../../config";
 import { getPublishedList } from "../../api/notion";
 import { getNotionObjectProperty } from "../../utils";

@@ -4,7 +4,7 @@ import Link from "next/link";
 import config from "../../config";
 import { getPublishedList, notion } from "../../api/notion";
 import { getNotionObjectProperty } from "../../utils";
-import { HeadTitle } from "../../components/doc-head";
+import HeadTitle from "../../components/head-title";
 
 export const getStaticProps: GetStaticProps = async () => {
   const list = await getPublishedList(config.notion.photos);

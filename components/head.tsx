@@ -1,12 +1,5 @@
 import Head from "next/head";
-
-export function HeadTitle({ title }: { title?: string }) {
-  return (
-    <Head>
-      <title>KEI{title && ` • ${title}`}</title>
-    </Head>
-  );
-}
+import HeadTitle from "./head-title";
 
 export default function DocumentHead() {
   return (

@@ -9,7 +9,7 @@ import { getNotionStaticPaths, getNotionObjectProperty } from "../../utils";
 import { getPageBlocksBySlug } from "../../api/notion";
 import Article from "../../components/article";
 import config from "../../config";
-import { HeadTitle } from "../../components/doc-head";
+import HeadTitle from "../../components/head-title";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getNotionStaticPaths(config.notion.photos);

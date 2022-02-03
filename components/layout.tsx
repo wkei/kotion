@@ -1,4 +1,4 @@
-import DocumentHead from "./doc-head";
+import DocumentHead from "./head";
 import Footer from "./footer";
 import Header from "./header";
 
