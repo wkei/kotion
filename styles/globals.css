@@ -9,7 +9,7 @@ html {
 }
 
 .prose :where(figure):not(:where([class~="not-prose"] *)) img {
-  @apply mb-0;
+  @apply mx-auto mb-0;
 }
 .prose :where(figure):not(:where([class~="not-prose"] *)) figcaption p {
   @apply my-0 text-center;
