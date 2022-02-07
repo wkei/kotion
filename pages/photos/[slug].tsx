@@ -7,7 +7,6 @@ import type {
 
 import { getNotionStaticPaths, getNotionObjectProperty } from "../../utils";
 import { getPageBlocksBySlug } from "../../api/notion";
-import Article from "../../components/article";
 import config from "../../config";
 import HeadTitle from "../../components/head-title";
 
@@ -27,18 +26,39 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
+function ImgBlock({ block }: { block: any }) {
+  if (block.type !== "image") return null;
+
+  const caption = block.image?.caption[0]?.plain_text;
+  const src = `https://keiz.notion.site/image/${encodeURIComponent(
+    block.image?.file?.url
+  )}?table=block&id=${block.id}&cache=v2`;
+
+  return (
+    <figure>
+      <img src={src} alt={caption} />
+      <figcaption>{caption}</figcaption>
+    </figure>
+  );
+}
+
 const Album: NextPage = ({
   page,
   blocks,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const title = getNotionObjectProperty(page, "Name");
+
   return (
     <>
       <HeadTitle title={title} />
       <header className="mb-12">
         <h2 className="text-center text-2xl font-bold">{title}</h2>
       </header>
-      <Article blocks={blocks} />
+      <article className="prose">
+        {blocks.map((block: any) => (
+          <ImgBlock block={block} key={block.id} />
+        ))}
+      </article>
     </>
   );
 };
