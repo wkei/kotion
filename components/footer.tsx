@@ -10,6 +10,7 @@ function useTokyoTime() {
       );
       const data = await res.json();
       const time = new Intl.DateTimeFormat("en-US", {
+        weekday: "short",
         hour: "numeric",
         minute: "numeric",
         hour12: false,
