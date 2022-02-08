@@ -9,13 +9,12 @@ const menu = [
 
 function Nav() {
   const { asPath } = useRouter();
-  const showBack = asPath.split("/").length > 2;
   const backHref = asPath.split("/").slice(0, -1).join("/");
   return (
     <ul className="flex justify-end">
-      {showBack && (
+      {!!backHref && (
         <li className="mr-auto inline-block">
-          <NavItem label="back" href={backHref} active />
+          <NavItem label="back" href={backHref} />
         </li>
       )}
       {menu.map((item) => (
@@ -30,15 +29,15 @@ function Nav() {
 function NavItem({
   href,
   label,
-  active,
 }: {
   href: string;
   label: string;
   active?: boolean;
 }) {
   const { asPath } = useRouter();
-  const activeClass =
-    href === asPath || active ? "text-stone-700" : "text-stone-400";
+  const reg = new RegExp(`^${href}/`);
+  const matched = asPath === href || reg.exec(asPath);
+  const activeClass = matched ? "text-stone-700" : "text-stone-400";
   return (
     <Link href={href}>
       <a
