@@ -30,10 +30,10 @@ export default function Footer() {
   const time = useTokyoTime();
 
   return (
-    <footer className="mb-12 mt-20 flex justify-between text-sm text-stone-400">
+    <footer className="mb-12 mt-20 flex select-none justify-between text-sm text-stone-400">
       <span>2022 © Kei</span>
       {time && (
-        <code className="select-none">
+        <code>
           <time>{time}</time>, JP
         </code>
       )}

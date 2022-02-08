@@ -11,7 +11,7 @@ function Nav() {
   const { asPath } = useRouter();
   const backHref = asPath.split("/").slice(0, -1).join("/");
   return (
-    <ul className="flex justify-end">
+    <ul className="flex select-none justify-end">
       {!!backHref && (
         <li className="mr-auto inline-block">
           <NavItem label="back" href={backHref} />
