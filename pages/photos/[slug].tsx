@@ -9,6 +9,7 @@ import { getNotionStaticPaths, getNotionObjectProperty } from "../../utils";
 import { getPageBlocksBySlug } from "../../api/notion";
 import config from "../../config";
 import HeadTitle from "../../components/head-title";
+import ImgBlock from "../../components/img-block";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getNotionStaticPaths(config.notion.photos);
@@ -25,22 +26,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: { page, blocks },
   };
 };
-
-function ImgBlock({ block }: { block: any }) {
-  if (block.type !== "image") return null;
-
-  const caption = block.image?.caption[0]?.plain_text;
-  const src = `https://keiz.notion.site/image/${encodeURIComponent(
-    block.image?.file?.url
-  )}?table=block&id=${block.id}&cache=v2`;
-
-  return (
-    <figure>
-      <img src={src} alt={caption} />
-      <figcaption>{caption}</figcaption>
-    </figure>
-  );
-}
 
 const Album: NextPage = ({
   page,

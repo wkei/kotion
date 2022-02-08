@@ -1,4 +1,5 @@
 import { getPublishedList } from "../api/notion";
+import config from "../config";
 
 export async function getNotionStaticPaths(databaseId: string) {
   const list = await getPublishedList(databaseId);
@@ -17,4 +18,9 @@ export function getNotionObjectProperty(obj: any, porperty: string) {
     return data.checkbox;
   }
   return data[data.type][0]?.plain_text;
+}
+
+export function getNotionImgUrl(url: string, id: string) {
+  const encodedUrl = encodeURIComponent(url);
+  return `//${config.notion.site}/image/${encodedUrl}?table=block&id=${id}&cache=v2`;
 }

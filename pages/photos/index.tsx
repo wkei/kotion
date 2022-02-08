@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import config from "../../config";
 import { getPublishedList, notion } from "../../api/notion";
-import { getNotionObjectProperty } from "../../utils";
+import { getNotionImgUrl, getNotionObjectProperty } from "../../utils";
 import HeadTitle from "../../components/head-title";
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -29,9 +29,14 @@ const Photos: NextPage = ({
               <figure className="text-center">
                 <div
                   className={`pb-full w-full bg-stone-50 bg-cover bg-center`}
-                  style={{ backgroundImage: `url(${item?.cover?.file.url})` }}
+                  style={{
+                    backgroundImage: `url(${getNotionImgUrl(
+                      item?.cover?.file.url,
+                      item.id
+                    )}`,
+                  }}
                 />
-                <figcaption className="my-2 uppercase ">
+                <figcaption className="my-2 uppercase">
                   {getNotionObjectProperty(item, "Name")}
                 </figcaption>
               </figure>
