@@ -6,7 +6,7 @@
     "build": "next build && next export",
     "start": "next start",
     "lint": "next lint",
-    "prettier": "prettier --write 'pages/**/*.{js,jsx,ts,tsx}' 'components/**/*.{js,jsx,ts,tsx}'"
+    "prettier": "prettier --write './**/*.{js,jsx,ts,tsx}' --ignore-path .gitignore"
   },
   "dependencies": {
     "@notion-stuff/blocks-html-parser": "^5.1.0",

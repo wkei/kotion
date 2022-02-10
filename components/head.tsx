@@ -1,5 +1,5 @@
-import Head from "next/head";
-import HeadTitle from "./head-title";
+import Head from 'next/head'
+import HeadTitle from './head-title'
 
 export default function DocumentHead() {
   return (
@@ -13,5 +13,5 @@ export default function DocumentHead() {
         <meta property="og:description" content="Kei's corner" />
       </Head>
     </>
-  );
+  )
 }

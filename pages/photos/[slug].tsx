@@ -3,35 +3,35 @@ import type {
   GetStaticProps,
   GetStaticPaths,
   InferGetStaticPropsType,
-} from "next";
+} from 'next'
 
-import { getNotionStaticPaths, getNotionObjectProperty } from "../../utils";
-import { getPageBlocksBySlug } from "../../api/notion";
-import config from "../../config";
-import HeadTitle from "../../components/head-title";
-import ImgBlock from "../../components/img-block";
+import { getNotionStaticPaths, getNotionObjectProperty } from '../../utils'
+import { getPageBlocksBySlug } from '../../api/notion'
+import config from '../../config'
+import HeadTitle from '../../components/head-title'
+import ImgBlock from '../../components/img-block'
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = await getNotionStaticPaths(config.notion.photos);
-  return { paths, fallback: false };
-};
+  const paths = await getNotionStaticPaths(config.notion.photos)
+  return { paths, fallback: false }
+}
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { page, blocks } = await getPageBlocksBySlug(
     config.notion.photos,
     context.params?.slug as string
-  );
+  )
 
   return {
     props: { page, blocks },
-  };
-};
+  }
+}
 
 const Album: NextPage = ({
   page,
   blocks,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const title = getNotionObjectProperty(page, "Name");
+  const title = getNotionObjectProperty(page, 'Name')
 
   return (
     <>
@@ -45,7 +45,7 @@ const Album: NextPage = ({
         ))}
       </article>
     </>
-  );
-};
+  )
+}
 
-export default Album;
+export default Album

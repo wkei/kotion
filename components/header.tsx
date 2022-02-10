@@ -1,15 +1,15 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const menu = [
-  { href: "/", label: "About" },
-  { href: "/records", label: "Records" },
-  { href: "/photos", label: "Photos" },
-];
+  { href: '/', label: 'About' },
+  { href: '/records', label: 'Records' },
+  { href: '/photos', label: 'Photos' },
+]
 
 function Nav() {
-  const { asPath } = useRouter();
-  const backHref = asPath.split("/").slice(0, -1).join("/");
+  const { asPath } = useRouter()
+  const backHref = asPath.split('/').slice(0, -1).join('/')
   return (
     <ul className="flex select-none justify-end">
       {!!backHref && (
@@ -23,21 +23,21 @@ function Nav() {
         </li>
       ))}
     </ul>
-  );
+  )
 }
 
 function NavItem({
   href,
   label,
 }: {
-  href: string;
-  label: string;
-  active?: boolean;
+  href: string
+  label: string
+  active?: boolean
 }) {
-  const { asPath } = useRouter();
-  const reg = new RegExp(`^${href}/`);
-  const matched = asPath === href || reg.exec(asPath);
-  const activeClass = matched ? "text-stone-700" : "text-stone-400";
+  const { asPath } = useRouter()
+  const reg = new RegExp(`^${href}/`)
+  const matched = asPath === href || reg.exec(asPath)
+  const activeClass = matched ? 'text-stone-700' : 'text-stone-400'
   return (
     <Link href={href}>
       <a
@@ -46,36 +46,42 @@ function NavItem({
         {label}
       </a>
     </Link>
-  );
+  )
+}
+
+function Logo() {
+  return (
+    <h1 className="select-none py-16 text-center font-FSC text-4xl">
+      <Link href="/">
+        <a>
+          <ruby className="group transition-color text-stone-300 duration-300  hover:text-stone-700">
+            K
+            <span className="relative">
+              <span className="invisible">Ξ</span>
+              <span className="absolute left-0 transition-opacity  duration-300 group-hover:opacity-0">
+                Ξ
+              </span>
+              <span className="absolute left-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                E
+              </span>
+            </span>
+            I<rp>(</rp>
+            <rt className="text-center text-sm text-stone-400 opacity-0 group-hover:opacity-100">
+              ケイ
+            </rt>
+            <rp>)</rp>
+          </ruby>
+        </a>
+      </Link>
+    </h1>
+  )
 }
 
 export default function Header() {
   return (
     <header className="mb-16">
-      <h1 className="font-FSC select-none py-16 text-center text-4xl">
-        <Link href="/">
-          <a>
-            <ruby className="group transition-color text-stone-300 duration-300  hover:text-stone-700">
-              K
-              <span className="relative">
-                <span className="invisible">Ξ</span>
-                <span className="absolute left-0 transition-opacity  duration-300 group-hover:opacity-0">
-                  Ξ
-                </span>
-                <span className="absolute left-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  E
-                </span>
-              </span>
-              I<rp>(</rp>
-              <rt className="text-center text-sm text-stone-400 opacity-0 group-hover:opacity-100">
-                ケイ
-              </rt>
-              <rp>)</rp>
-            </ruby>
-          </a>
-        </Link>
-      </h1>
+      <Logo />
       <Nav />
     </header>
-  );
+  )
 }

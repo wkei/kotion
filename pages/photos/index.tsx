@@ -1,17 +1,17 @@
-import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
-import Link from "next/link";
+import type { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next'
+import Link from 'next/link'
 
-import config from "../../config";
-import { getPublishedList, notion } from "../../api/notion";
-import { getNotionImgUrl, getNotionObjectProperty } from "../../utils";
-import HeadTitle from "../../components/head-title";
+import config from '../../config'
+import { getPublishedList, notion } from '../../api/notion'
+import { getNotionImgUrl, getNotionObjectProperty } from '../../utils'
+import HeadTitle from '../../components/head-title'
 
 export const getStaticProps: GetStaticProps = async () => {
-  const list = await getPublishedList(config.notion.photos);
+  const list = await getPublishedList(config.notion.photos)
   return {
     props: { list },
-  };
-};
+  }
+}
 
 const Photos: NextPage = ({
   list,
@@ -23,7 +23,7 @@ const Photos: NextPage = ({
         {list.map((item: any) => (
           <Link
             key={item.id}
-            href={`/photos/${getNotionObjectProperty(item, "Slug")}`}
+            href={`/photos/${getNotionObjectProperty(item, 'Slug')}`}
           >
             <a className="transform-color text-stone-400 duration-300 hover:text-stone-700 focus:outline-dotted focus:outline-1">
               <figure className="text-center">
@@ -37,7 +37,7 @@ const Photos: NextPage = ({
                   }}
                 />
                 <figcaption className="my-2 uppercase">
-                  {getNotionObjectProperty(item, "Name")}
+                  {getNotionObjectProperty(item, 'Name')}
                 </figcaption>
               </figure>
             </a>
@@ -45,7 +45,7 @@ const Photos: NextPage = ({
         ))}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Photos;
+export default Photos

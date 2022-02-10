@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,10 +8,10 @@ html {
   @apply text-stone-800 antialiased selection:bg-amber-200 selection:text-stone-700;
 }
 
-.prose :where(figure):not(:where([class~="not-prose"] *)) img {
+.prose :where(figure):not(:where([class~='not-prose'] *)) img {
   @apply mx-auto mb-0;
 }
-.prose :where(figure):not(:where([class~="not-prose"] *)) figcaption p {
+.prose :where(figure):not(:where([class~='not-prose'] *)) figcaption p {
   @apply my-0 text-center;
 }
 

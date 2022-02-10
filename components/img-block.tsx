@@ -1,9 +1,9 @@
-import { getNotionImgUrl } from "../utils";
+import { getNotionImgUrl } from '../utils'
 
 export default function ImgBlock({ block }: { block: any }) {
-  if (block.type !== "image") return null;
+  if (block.type !== 'image') return null
 
-  const caption = block.image?.caption[0]?.plain_text;
+  const caption = block.image?.caption[0]?.plain_text
 
   return (
     <figure>
@@ -13,5 +13,5 @@ export default function ImgBlock({ block }: { block: any }) {
       />
       <figcaption>{caption}</figcaption>
     </figure>
-  );
+  )
 }

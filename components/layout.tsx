@@ -1,6 +1,6 @@
-import DocumentHead from "./head";
-import Footer from "./footer";
-import Header from "./header";
+import DocumentHead from './head'
+import Footer from './footer'
+import Header from './header'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -10,5 +10,5 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <main className="mb-auto">{children}</main>
       <Footer />
     </div>
-  );
+  )
 }
