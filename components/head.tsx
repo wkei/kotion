@@ -17,7 +17,7 @@ export default function Head() {
         async
         defer
         data-website-id="b2d3d034-3a16-46dc-8365-ba80b1676203"
-        src="https://umami-beta-tawny.vercel.app/umami.js"
+        src="https://kumami.vercel.app/umami.js"
       />
     </>
   )
