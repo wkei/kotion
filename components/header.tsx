@@ -58,10 +58,10 @@ function Logo() {
             K
             <span className="relative">
               <span className="invisible">Ξ</span>
-              <span className="absolute left-0 transition-opacity  duration-300 group-hover:opacity-0">
+              <span className="absolute left-0 top-1/2 translate-y-[-50%] transition-opacity  duration-300 group-hover:opacity-0">
                 Ξ
               </span>
-              <span className="absolute left-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <span className="absolute left-0 top-1/2 translate-y-[-50%] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 E
               </span>
             </span>
