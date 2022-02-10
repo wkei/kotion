@@ -1,3 +1,5 @@
+import Head from 'next/head'
+
 type SeoProps = {
   title?: string
   desc?: string
@@ -8,7 +10,7 @@ type SeoProps = {
 
 export default function SEO({ title, desc, url, image, icon }: SeoProps) {
   return (
-    <>
+    <Head>
       <title>{title}</title>
       <meta name="description" content={desc} />
       <link rel="shortcut icon" type="image/x-icon" href={icon} />
@@ -20,6 +22,6 @@ export default function SEO({ title, desc, url, image, icon }: SeoProps) {
       <meta property="og:image" content={image} />
 
       <meta name="twitter:card" content="summary" />
-    </>
+    </Head>
   )
 }

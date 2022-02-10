@@ -1,9 +1,18 @@
 import Head from 'next/head'
 
-export default function HeadTitle({ title }: { title?: string }) {
+export default function HeadTitle({
+  title,
+  desc,
+}: {
+  title?: string
+  desc?: string
+}) {
+  const fullTitle = `KEI${title ? ` • ${title}` : ''}`
+
   return (
     <Head>
-      <title>KEI{title && ` • ${title}`}</title>
+      <title>{fullTitle}</title>
+      <meta property="og:title" content={fullTitle} />
     </Head>
   )
 }
