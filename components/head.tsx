@@ -11,8 +11,8 @@ export default function Head() {
           title="Kei"
           desc="Kei's corner"
           url="https://keiw.xyz"
-          image="https://keiw.xyz/logo-s.png"
-          icon="/logo-r.png"
+          image="https://github.com/wkei.png"
+          icon="https://github.com/wkei.png"
         />
       </NextHead>
     </>
