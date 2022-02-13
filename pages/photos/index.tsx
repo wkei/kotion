@@ -9,7 +9,7 @@ import HeadTitle from '../../components/head-title'
 export const getStaticProps: GetStaticProps = async () => {
   const list = await getPublishedList(config.notion.photos)
   return {
-    props: { list },
+    props: { list: [...list].reverse() },
   }
 }
 
