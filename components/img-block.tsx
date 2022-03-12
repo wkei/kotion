@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { getNotionImgUrl } from '../utils'
 
 export default function ImgBlock({ block }: { block: any }) {
@@ -7,7 +8,7 @@ export default function ImgBlock({ block }: { block: any }) {
 
   return (
     <figure>
-      <img
+      <Image
         src={getNotionImgUrl(block.image?.file?.url, block.id)}
         alt={caption}
       />
