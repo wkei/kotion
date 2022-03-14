@@ -22,5 +22,5 @@ export function getNotionObjectProperty(obj: any, porperty: string) {
 
 export function getNotionImgUrl(url: string, id: string) {
   const encodedUrl = encodeURIComponent(url)
-  return `//${config.notion.site}/image/${encodedUrl}?table=block&id=${id}&cache=v2`
+  return `https://${config.notion.site}/image/${encodedUrl}?table=block&id=${id}&cache=v2`
 }
