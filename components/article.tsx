@@ -1,4 +1,5 @@
 import { NotionBlocksHtmlParser } from '@notion-stuff/blocks-html-parser'
+import { wrapBlockImgUrl } from '../utils'
 
 const parser = NotionBlocksHtmlParser.getInstance()
 
@@ -9,7 +10,7 @@ export default function Article({
   html?: string
   blocks?: any
 }) {
-  const __html = html || parser.parse(blocks)
+  const __html = html || parser.parse(wrapBlockImgUrl(blocks))
   return (
     <>
       <article className="prose" dangerouslySetInnerHTML={{ __html }} />

@@ -4,6 +4,7 @@ import { getBlocks } from '../api/notion'
 import config from '../config'
 import Article from '../components/article'
 import HeadTitle from '../components/head-title'
+import { getNotionImgUrl } from '../utils'
 
 export const getStaticProps: GetStaticProps = async () => {
   const content = await getBlocks({ block_id: config.notion.crafts })

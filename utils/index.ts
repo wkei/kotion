@@ -24,3 +24,13 @@ export function getNotionImgUrl(url: string, id: string) {
   const encodedUrl = encodeURIComponent(url)
   return `https://${config.notion.site}/image/${encodedUrl}?table=block&id=${id}&cache=v2`
 }
+
+export function wrapBlockImgUrl(content: any[]): any[] {
+  return content.map((block: any) => {
+    if (block.type === 'image') {
+      block.image.file.url = getNotionImgUrl(block.image.file.url, block.id)
+      return block
+    }
+    return block
+  })
+}
