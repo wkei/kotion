@@ -10,6 +10,7 @@ import { getPageBlocksBySlug } from '../../api/notion'
 import config from '../../config'
 import HeadTitle from '../../components/head-title'
 import ImgBlock from '../../components/img-block'
+import Article from '../../components/article'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getNotionStaticPaths(config.notion.photos)
@@ -39,11 +40,11 @@ const Album: NextPage = ({
       <header className="mb-12">
         <h2 className="text-center text-2xl font-bold">{title}</h2>
       </header>
-      <article className="prose">
+      <Article>
         {blocks.map((block: any) => (
           <ImgBlock block={block} key={block.id} />
         ))}
-      </article>
+      </Article>
     </>
   )
 }

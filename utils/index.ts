@@ -20,15 +20,22 @@ export function getNotionObjectProperty(obj: any, porperty: string) {
   return data[data.type][0]?.plain_text
 }
 
-export function getNotionImgUrl(url: string, id: string) {
-  const encodedUrl = encodeURIComponent(url)
-  return `https://${config.notion.site}/image/${encodedUrl}?table=block&id=${id}&cache=v2`
+export function getNotionImgUrl(url: string, id: string, entity = false) {
+  return [
+    `https://notion.so/image/${encodeURIComponent(url)}?table=block`,
+    `id=${id}`,
+    `cache=v2`,
+  ].join(entity ? '&amp;' : '&')
 }
 
 export function wrapBlockImgUrl(content: any[]): any[] {
   return content.map((block: any) => {
     if (block.type === 'image') {
-      block.image.file.url = getNotionImgUrl(block.image.file.url, block.id)
+      block.image.file.url = getNotionImgUrl(
+        block.image.file.url,
+        block.id,
+        true
+      )
       return block
     }
     return block
