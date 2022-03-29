@@ -49,6 +49,8 @@ const CoverImg = ({ data, covers }: { data: any; covers: ImageData[] }) => {
       width={cover.width}
       height={cover.height}
       objectFit="cover"
+      quality={90}
+      priority
     />
   )
 }
