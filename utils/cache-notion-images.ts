@@ -9,7 +9,9 @@ export default async function cacheNotionImages(
   blocks.forEach((block) => {
     if (block.type === 'image' && block.image?.file?.url) {
       const { url } = block.image.file
-      fetchImgTasks.push(cacheImage({ url, path }))
+      let filename = url.match(/[\w-]+\.(jpg|png|jpeg|webp)/)?.[0] || ''
+      filename = filename.split('.').join(`-${block.id}.`)
+      fetchImgTasks.push(cacheImage({ url, path, filename }))
     }
   })
   return await Promise.all(fetchImgTasks)

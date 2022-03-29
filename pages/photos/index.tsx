@@ -19,7 +19,8 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     ? await Promise.all(
         list.map(async (item: any) => {
           const filename =
-            getNotionObjectProperty(item, 'Name').toLowerCase() + '.jpg'
+            getNotionObjectProperty(item, 'Name').toLowerCase() +
+            `-${item.id}.jpg`
           return await cacheImage({
             url: item?.cover?.file.url,
             path: 'photos',
