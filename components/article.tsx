@@ -33,6 +33,7 @@ export default function Article({
                   width={imageData.width}
                   height={imageData.height}
                   quality={100}
+                  priority
                 />
               )
             }
