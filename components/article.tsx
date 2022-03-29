@@ -32,7 +32,7 @@ export default function Article({
                   src={imageData.path}
                   width={imageData.width}
                   height={imageData.height}
-                  quality={100}
+                  quality={99}
                   priority
                 />
               )
