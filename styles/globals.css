@@ -21,3 +21,11 @@ html {
     padding-bottom: 100%;
   }
 }
+
+.photo-cover > span,
+.photo-cover > img {
+  position: absolute!important;
+  display: block!important;
+  height: 100%!important;
+  object-fit: cover;
+}

@@ -1,20 +1,21 @@
-import type { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next'
+import type { NextPage, GetStaticProps } from 'next'
 
-import { getBlocks } from '../api/notion'
+import { getBlocks } from '../lib/notion'
 import config from '../config'
 import Article from '../components/article'
 
-export const getStaticProps: GetStaticProps = async () => {
-  const content = await getBlocks({ block_id: config.notion.about })
+type Props = {
+  blocks: any[]
+}
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const blocks = await getBlocks({ block_id: config.notion.about })
   return {
-    props: { content },
+    props: { blocks },
   }
 }
 
-const About: NextPage = ({
-  content,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
-  return <Article blocks={content} />
+const About: NextPage<Props> = ({ blocks }) => {
+  return <Article blocks={blocks} />
 }
 
 export default About

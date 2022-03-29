@@ -5,8 +5,6 @@ import type {
   GetBlockParameters,
 } from '@notionhq/client/build/src/api-endpoints.d'
 
-import { getNotionObjectProperty } from '../utils'
-
 export const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 })
@@ -57,4 +55,24 @@ export async function getPageBlocksBySlug(database_id: string, slug: string) {
     page,
     blocks: await getBlocks({ block_id: page.id }),
   }
+}
+
+// ------------------------------------------------------------
+export async function getNotionStaticPaths(databaseId: string) {
+  const list = await getPublishedList(databaseId)
+  return list.map((item: any) => ({
+    params: { slug: getNotionObjectProperty(item, 'Slug') },
+  }))
+}
+
+export function getNotionObjectProperty(obj: any, porperty: string) {
+  const data = obj.properties[porperty]
+  const { type } = data
+  if (type === 'date') {
+    return data[type].start
+  }
+  if (type === 'checkbox') {
+    return data.checkbox
+  }
+  return data[data.type][0]?.plain_text
 }

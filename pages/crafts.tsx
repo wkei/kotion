@@ -1,25 +1,29 @@
-import type { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next'
+import type { NextPage, GetStaticProps } from 'next'
 
-import { getBlocks } from '../api/notion'
+import { getBlocks } from '../lib/notion'
 import config from '../config'
 import Article from '../components/article'
 import HeadTitle from '../components/head-title'
-import { getNotionImgUrl } from '../utils'
+import cacheNotionImages, { ImageData } from '../utils/cache-notion-images'
+
+type Props = {
+  blocks: any[]
+  images: ImageData[]
+}
 
 export const getStaticProps: GetStaticProps = async () => {
-  const content = await getBlocks({ block_id: config.notion.crafts })
+  const blocks = await getBlocks({ block_id: config.notion.crafts })
+  const images = await cacheNotionImages(blocks, 'crafts')
   return {
-    props: { content },
+    props: { blocks, images },
   }
 }
 
-const Crafts: NextPage = ({
-  content,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Crafts: NextPage<Props> = ({ blocks, images }) => {
   return (
     <>
       <HeadTitle title="Crafts" />
-      <Article blocks={content} />
+      <Article blocks={blocks} images={images} />
     </>
   )
 }
