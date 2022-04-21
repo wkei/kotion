@@ -55,18 +55,8 @@ function Logo() {
     <h1 className="select-none py-16 text-center font-FSC text-4xl">
       <Link href="/">
         <a>
-          <ruby className="group transition-color text-stone-300 duration-300  hover:text-stone-700">
-            K
-            <span className="relative">
-              <span className="invisible">Ξ</span>
-              <span className="absolute left-0 top-1/2 translate-y-[-50%] transition-opacity  duration-300 group-hover:opacity-0">
-                Ξ
-              </span>
-              <span className="absolute left-0 top-1/2 translate-y-[-50%] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                E
-              </span>
-            </span>
-            I<rp>(</rp>
+          <ruby className="group transition-color text-stone-300 duration-300 hover:text-stone-700">
+            KEI<rp>(</rp>
             <rt className="text-center text-sm text-stone-400 opacity-0 group-hover:opacity-100">
               ケイ
             </rt>
