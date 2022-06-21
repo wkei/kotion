@@ -1,6 +1,5 @@
 import type { NextPage, GetStaticProps } from 'next'
 import Link from 'next/link'
-import Image from 'next/image'
 
 import config from '../../config'
 import { getPublishedList, getNotionObjectProperty } from '../../lib/notion'
@@ -20,6 +19,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 const Cover = ({ data }: { data: any }) => {
   const slug = getNotionObjectProperty(data, 'Slug')
   const name = getNotionObjectProperty(data, 'Name')
+  const coverSrc = data.cover?.file.url
   return (
     <Link href={`/photos/${slug}`}>
       <a className="transform-color text-stone-400 duration-300 hover:text-stone-700 focus:outline-dotted focus:outline-1">
@@ -27,7 +27,10 @@ const Cover = ({ data }: { data: any }) => {
           <div
             className={`photo-cover pb-full relative w-full bg-stone-50 bg-cover bg-center`}
           >
-            <img src={data.cover?.file.url} alt={name} />
+            <picture>
+              <source srcSet={coverSrc} type="image/jpeg" />
+              <img src={coverSrc} alt={name} />
+            </picture>
           </div>
           <figcaption className="my-2 uppercase">{name}</figcaption>
         </figure>
