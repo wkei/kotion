@@ -1,48 +1,10 @@
 import { NotionBlocksHtmlParser } from '@notion-stuff/blocks-html-parser'
-import htmlReactParser, { Element } from 'html-react-parser'
-import Image from 'next/image'
-import type { ImageData } from '../lib/cache-image'
+import htmlReactParser from 'html-react-parser'
 
 const parser = NotionBlocksHtmlParser.getInstance({})
 
-export default function Article({
-  blocks,
-  images,
-}: {
-  blocks?: any
-  images?: ImageData[]
-}) {
-  let components = null
-  if (blocks) {
-    const html = parser.parse(blocks)
-    components = htmlReactParser(html, {
-      replace: (domNode) => {
-        if (process.env.NODE_ENV !== 'production') {
-          return domNode
-        }
-        if (domNode instanceof Element && domNode.attribs) {
-          if (domNode.attribs.src) {
-            const imageData = images?.find(
-              (image) => image.originalUrl === domNode.attribs.src
-            )
-            if (imageData) {
-              return (
-                <Image
-                  alt={domNode.attribs.alt}
-                  src={imageData.path}
-                  width={imageData.width}
-                  height={imageData.height}
-                  quality={90}
-                  priority
-                />
-              )
-            }
-          }
-        }
-        return domNode
-      },
-    })
-  }
+export default function Article({ blocks }: { blocks?: any }) {
+  const components = blocks ? htmlReactParser(parser.parse(blocks)) : null
   return (
     <>
       <article className="prose">{components}</article>
