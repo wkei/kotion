@@ -8,7 +8,6 @@ export default function Article({ blocks }: { blocks?: any }) {
   return (
     <>
       <article className="prose">{components}</article>
-      <div className="mt-20 select-none text-center text-stone-300">&bull;</div>
     </>
   )
 }

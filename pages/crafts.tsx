@@ -1,6 +1,6 @@
 import type { NextPage, GetStaticProps } from 'next'
 
-import { getBlocks } from '../lib/notion'
+import { getBlocks } from '../utils/notion'
 import config from '../config'
 import Article from '../components/article'
 import HeadTitle from '../components/head-title'

@@ -30,13 +30,16 @@ export default function Footer() {
   const time = useTokyoTime()
 
   return (
-    <footer className="mb-12 mt-20 flex select-none justify-between text-sm text-stone-400">
-      <span>2022 © Kei</span>
-      {time && (
-        <code>
-          <time>{time}</time>, JP
-        </code>
-      )}
-    </footer>
+    <>
+      <div className="mt-20 select-none text-center text-stone-300">&bull;</div>
+      <footer className="mb-12 mt-20 flex select-none justify-between text-sm text-stone-400">
+        <span>2022 © Kei</span>
+        {time && (
+          <span>
+            <time>{time}</time>, JP
+          </span>
+        )}
+      </footer>
+    </>
   )
 }

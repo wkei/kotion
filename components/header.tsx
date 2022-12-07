@@ -3,9 +3,8 @@ import { useRouter } from 'next/router'
 
 const menu = [
   { href: '/', label: 'About' },
-  // { href: '/records', label: 'Records' },
-  { href: '/crafts', label: 'Crafts' },
   { href: '/photos', label: 'Photos' },
+  { href: '/crafts', label: 'Crafts' },
 ]
 
 function Nav() {
@@ -40,12 +39,11 @@ function NavItem({
   const matched = asPath === href || reg.exec(asPath)
   const activeClass = matched ? 'text-stone-700' : 'text-stone-400'
   return (
-    <Link href={href}>
-      <a
-        className={`${activeClass} transition-color p-1 text-sm uppercase duration-300 hover:text-stone-700 focus:outline-dotted focus:outline-1`}
-      >
-        {label}
-      </a>
+    <Link
+      href={href}
+      className={`${activeClass} transition-color p-1 text-sm uppercase duration-300 hover:text-stone-700 focus:outline-dotted focus:outline-1`}
+    >
+      {label}
     </Link>
   )
 }
@@ -54,15 +52,13 @@ function Logo() {
   return (
     <h1 className="select-none py-16 text-center font-FSC text-4xl">
       <Link href="/">
-        <a>
-          <ruby className="group transition-color text-stone-300 duration-300 hover:text-stone-700">
-            KEI<rp>(</rp>
-            <rt className="text-center text-sm text-stone-400 opacity-0 group-hover:opacity-100">
-              ケイ
-            </rt>
-            <rp>)</rp>
-          </ruby>
-        </a>
+        <ruby className="group transition-color text-stone-300 duration-300 hover:text-stone-700">
+          KEI<rp>(</rp>
+          <rt className="text-center text-sm text-stone-400 opacity-0 group-hover:opacity-100">
+            ケイ
+          </rt>
+          <rp>)</rp>
+        </ruby>
       </Link>
     </h1>
   )

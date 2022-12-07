@@ -1,13 +1,14 @@
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next'
+import Image from 'next/image'
 
 import {
   getPageBlocksBySlug,
   getNotionStaticPaths,
   getNotionObjectProperty,
-} from '../../lib/notion'
+} from '../../utils/notion'
 import config from '../../config'
 import HeadTitle from '../../components/head-title'
-import Article from '../../components/article'
+import { NotionImg } from '../../components/notion-img'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getNotionStaticPaths(config.notion.photos)
@@ -42,7 +43,21 @@ const Album: NextPage<Props> = ({ page, blocks }) => {
       <header className="mb-12">
         <h2 className="text-center text-2xl font-bold">{title}</h2>
       </header>
-      <Article blocks={blocks} />
+      <article className="prose">
+        {blocks.map((block) => {
+          if (!block?.image) return null
+          return (
+            <figure className="photo" key={block.id}>
+              <NotionImg
+                className="relative"
+                src={block.image.file.url}
+                id={block.id}
+              />
+              {/* <figcaption></figcaption> */}
+            </figure>
+          )
+        })}
+      </article>
     </>
   )
 }

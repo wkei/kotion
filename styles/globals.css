@@ -28,3 +28,10 @@ html {
   height: 100%!important;
   object-fit: cover;
 }
+
+.photo {
+  @apply relative;
+}
+.photo > span {
+  @apply !relative;
+}

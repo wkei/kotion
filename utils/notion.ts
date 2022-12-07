@@ -76,3 +76,7 @@ export function getNotionObjectProperty(obj: any, porperty: string) {
   }
   return data[data.type][0]?.plain_text
 }
+
+export function genNotionImageUrl(url: string, id: string) {
+  return `https://www.notion.so/image/${encodeURIComponent(url)}?table=block&id=${id}&cache=v2`
+}
