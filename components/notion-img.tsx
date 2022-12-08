@@ -1,5 +1,4 @@
 import { genNotionImageUrl } from '../utils/notion'
-import Image from 'next/image'
 
 type NotionImgProps = {
   src: string
@@ -10,13 +9,7 @@ type NotionImgProps = {
 
 export const NotionImg = ({ className, src, id, alt = '' }: NotionImgProps) => (
   <div className={className}>
-    <Image
-      alt={alt}
-      src={src}
-      loader={({ src }) => genNotionImageUrl(src, id)}
-      layout="fill"
-      className="!relative !h-auto"
-    />
+    <img src={genNotionImageUrl(src, id)} />
   </div>
 )
 
